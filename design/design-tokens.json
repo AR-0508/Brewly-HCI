@@ -1,0 +1,40 @@
+{
+  "$description": "Brewly design tokens (exported from the Figma variable collection 'Brewly Tokens'). Same values are used in tailwind.config inside index.html.",
+  "color": {
+    "primary":       { "$type": "color", "$value": "#1E3A5F", "$description": "Navy - nav, headings, primary buttons" },
+    "primary-dark":  { "$type": "color", "$value": "#152A45", "$description": "Hover state for primary" },
+    "accent":        { "$type": "color", "$value": "#0E9F9B", "$description": "Teal - highlights, icons, links" },
+    "accent-soft":   { "$type": "color", "$value": "#E6F6F5", "$description": "Light teal - icon backgrounds, badges" },
+    "background":    { "$type": "color", "$value": "#F8FAFC", "$description": "Page background" },
+    "surface":       { "$type": "color", "$value": "#FFFFFF", "$description": "Cards, inputs" },
+    "text":          { "$type": "color", "$value": "#0F172A", "$description": "Body text" },
+    "muted":         { "$type": "color", "$value": "#475569", "$description": "Secondary text" },
+    "border":        { "$type": "color", "$value": "#E2E8F0", "$description": "Dividers, card borders" }
+  },
+  "spacing": {
+    "xs":  { "$type": "dimension", "$value": "8px" },
+    "sm":  { "$type": "dimension", "$value": "16px" },
+    "md":  { "$type": "dimension", "$value": "24px" },
+    "lg":  { "$type": "dimension", "$value": "48px" },
+    "xl":  { "$type": "dimension", "$value": "96px" }
+  },
+  "radius": {
+    "sm": { "$type": "dimension", "$value": "8px" },
+    "md": { "$type": "dimension", "$value": "12px" },
+    "lg": { "$type": "dimension", "$value": "20px" }
+  },
+  "font": {
+    "family": { "$type": "fontFamily", "$value": "Inter" },
+    "size": {
+      "body":  { "$type": "dimension", "$value": "16px" },
+      "h3":    { "$type": "dimension", "$value": "20px" },
+      "h2":    { "$type": "dimension", "$value": "36px" },
+      "h1":    { "$type": "dimension", "$value": "56px" }
+    }
+  },
+  "breakpoints": {
+    "mobile":  "375px",
+    "tablet":  "768px",
+    "desktop": "1440px"
+  }
+}

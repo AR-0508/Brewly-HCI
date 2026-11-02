@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 380" role="img" aria-labelledby="t">
+  <title id="t">Illustration of a steaming cup of coffee on a saucer</title>
+  <rect width="520" height="380" rx="20" fill="#E6F6F5"/>
+  <circle cx="400" cy="90" r="60" fill="#0E9F9B" opacity="0.15"/>
+  <circle cx="110" cy="300" r="80" fill="#1E3A5F" opacity="0.08"/>
+  <ellipse cx="260" cy="300" rx="130" ry="26" fill="#1E3A5F" opacity="0.18"/>
+  <path d="M170 160h180v70a90 90 0 0 1-90 90h0a90 90 0 0 1-90-90z" fill="#1E3A5F"/>
+  <path d="M350 185h22a28 28 0 0 1 0 56h-26" fill="none" stroke="#1E3A5F" stroke-width="16" stroke-linecap="round"/>
+  <ellipse cx="260" cy="160" rx="90" ry="14" fill="#152A45"/>
+  <ellipse cx="260" cy="160" rx="78" ry="9" fill="#0E9F9B"/>
+  <g fill="none" stroke="#0E9F9B" stroke-width="8" stroke-linecap="round">
+    <path d="M225 120c-14-18 14-30 0-52"/>
+    <path d="M260 115c-14-18 14-30 0-52"/>
+    <path d="M295 120c-14-18 14-30 0-52"/>
+  </g>
+</svg>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brewly | Fresh Coffee Delivered</title>
+  <meta name="description" content="Brewly - small-batch coffee roasted fresh and delivered to your door. HCI Lab 07, PUCIT." />
+
+  <!-- Tailwind CSS (CDN) with the design tokens from the Figma variables -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: "#1E3A5F", dark: "#152A45" },
+            accent: { DEFAULT: "#0E9F9B", soft: "#E6F6F5" },
+            canvas: "#F8FAFC",
+            surface: "#FFFFFF",
+            ink: "#0F172A",
+            muted: "#475569",
+            line: "#E2E8F0",
+          },
+          fontFamily: { sans: ["Inter", "system-ui", "sans-serif"] },
+          borderRadius: { sm: "8px", md: "12px", lg: "20px" },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body class="bg-canvas font-sans text-ink antialiased">
+  <!-- Skip link for keyboard users -->
+  <a href="#main"
+     class="fixed left-4 top-4 -translate-y-[200%] rounded-sm bg-primary px-4 py-2 text-white transition-transform focus:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">
+    Skip to main content
+  </a>
+
+  <!-- 1. NAVIGATION BAR -->
+  <header class="border-b border-line bg-surface">
+    <nav aria-label="Main navigation"
+         class="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-4 px-4 py-5 md:px-12 lg:px-[120px]">
+      <a href="#home"
+         class="rounded-sm text-2xl font-bold text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">
+        Brewly
+      </a>
+
+      <ul class="order-last flex w-full items-center justify-center gap-8 text-sm font-medium text-muted md:order-none md:w-auto md:text-base">
+        <li><a href="#home" class="rounded-sm px-1 py-1 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">Home</a></li>
+        <li><a href="#features" class="rounded-sm px-1 py-1 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">Features</a></li>
+        <li><a href="#contact" class="rounded-sm px-1 py-1 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">Contact</a></li>
+      </ul>
+
+      <a href="#contact"
+         class="rounded-sm bg-primary px-6 py-3 font-semibold text-white transition hover:bg-primary-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">
+        Order now
+      </a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- 2. HERO SECTION WITH CALL-TO-ACTION -->
+    <section id="home" aria-labelledby="hero-title"
+             class="mx-auto flex max-w-[1440px] flex-col items-center gap-12 px-4 py-12 md:px-12 lg:flex-row lg:gap-24 lg:px-[120px] lg:py-24">
+      <div class="flex-1">
+        <p class="mb-4 text-sm font-semibold text-accent">Freshly roasted, every morning</p>
+        <h1 id="hero-title" class="text-4xl font-bold leading-tight text-primary lg:text-[56px]">
+          Great coffee, delivered to your door.
+        </h1>
+        <p class="mt-6 max-w-xl text-base text-muted lg:text-lg">
+          Small-batch beans from trusted farms, roasted fresh and shipped within 24 hours.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="#features"
+             class="rounded-sm bg-primary px-7 py-3.5 font-semibold text-white transition hover:bg-primary-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">
+            Shop coffee
+          </a>
+          <a href="#features"
+             class="rounded-sm border border-primary bg-surface px-7 py-3.5 font-semibold text-primary transition hover:bg-accent-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">
+            Learn more
+          </a>
+        </div>
+      </div>
+      <img src="assets/hero.svg"
+           alt="Illustration of a steaming cup of coffee on a saucer"
+           width="520" height="380"
+           class="h-auto w-full max-w-[520px] rounded-lg" />
+    </section>
+
+    <!-- 3. MULTI-CARD FEATURE GRID -->
+    <section id="features" aria-labelledby="features-title" class="bg-surface">
+      <div class="mx-auto max-w-[1440px] px-4 py-12 md:px-12 lg:px-[120px] lg:py-24">
+        <h2 id="features-title" class="text-3xl font-bold text-primary lg:text-4xl">Why people love Brewly</h2>
+        <p class="mt-2 text-muted">Three simple reasons to make us your daily cup.</p>
+
+        <!-- Stack cards at tablet and mobile widths; use three columns on desktop. -->
+        <div class="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <article class="rounded-lg border border-line bg-surface p-6 transition hover:-translate-y-1 hover:shadow-lg focus-within:ring-2 focus-within:ring-accent">
+            <div class="mb-4 inline-flex rounded-md bg-accent-soft p-3">
+              <img src="assets/icon-leaf.svg" alt="" width="28" height="28" />
+            </div>
+            <h3 class="text-xl font-semibold">Fresh roasted</h3>
+            <p class="mt-2 text-muted">Roasted in small batches so every cup tastes bright and full of flavour.</p>
+          </article>
+
+          <article class="rounded-lg border border-line bg-surface p-6 transition hover:-translate-y-1 hover:shadow-lg focus-within:ring-2 focus-within:ring-accent">
+            <div class="mb-4 inline-flex rounded-md bg-accent-soft p-3">
+              <img src="assets/icon-truck.svg" alt="" width="28" height="28" />
+            </div>
+            <h3 class="text-xl font-semibold">Fast delivery</h3>
+            <p class="mt-2 text-muted">Order before noon and your beans leave our roastery the same day.</p>
+          </article>
+
+          <article class="rounded-lg border border-line bg-surface p-6 transition hover:-translate-y-1 hover:shadow-lg focus-within:ring-2 focus-within:ring-accent">
+            <div class="mb-4 inline-flex rounded-md bg-accent-soft p-3">
+              <img src="assets/icon-cup.svg" alt="" width="28" height="28" />
+            </div>
+            <h3 class="text-xl font-semibold">Made for everyone</h3>
+            <p class="mt-2 text-muted">From espresso fans to filter lovers, pick the roast that suits you.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. CONTACT FORM -->
+    <section id="contact" aria-labelledby="contact-title"
+             class="mx-auto max-w-[1440px] px-4 py-12 md:px-12 lg:px-[120px] lg:py-24">
+      <h2 id="contact-title" class="text-3xl font-bold text-primary lg:text-4xl">Get in touch</h2>
+      <p class="mt-2 text-muted">Questions about an order? Send us a message.</p>
+
+      <form id="contact-form" class="mt-8 w-full space-y-4 rounded-lg border border-line bg-surface p-6" novalidate>
+        <div>
+          <label for="name" class="mb-1.5 block text-sm font-medium">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name"
+                 class="w-full rounded-sm border border-line bg-surface px-4 py-3 placeholder:text-muted/70 hover:border-primary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent" />
+        </div>
+        <div>
+          <label for="email" class="mb-1.5 block text-sm font-medium">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"
+                 class="w-full rounded-sm border border-line bg-surface px-4 py-3 placeholder:text-muted/70 hover:border-primary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent" />
+        </div>
+        <div>
+          <label for="message" class="mb-1.5 block text-sm font-medium">Message</label>
+          <textarea id="message" name="message" rows="4" required placeholder="How can we help?"
+                    class="w-full rounded-sm border border-line bg-surface px-4 py-3 placeholder:text-muted/70 hover:border-primary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent"></textarea>
+        </div>
+        <button type="submit"
+                class="rounded-sm bg-primary px-7 py-3.5 font-semibold text-white transition hover:bg-primary-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">
+          Send message
+        </button>
+        <p id="form-status" role="status" aria-live="polite" class="text-sm font-medium text-accent"></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-primary">
+    <div class="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-2 px-4 py-6 text-center md:flex-row md:px-12 md:text-left lg:px-[120px]">
+      <p class="text-lg font-bold text-white">Brewly</p>
+      <p class="text-sm text-line">&copy; 2026 Brewly. HCI Lab 07, PUCIT.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Tiny demo handler: validates, then shows a friendly confirmation (no backend needed).
+    const form = document.getElementById("contact-form");
+    const status = document.getElementById("form-status");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        status.className = "text-sm font-medium text-red-700";
+        status.textContent = "Please fill in your name, a valid email and a message.";
+        return;
+      }
+      status.className = "text-sm font-medium text-accent";
+      status.textContent = "Thanks! Your message has been sent.";
+      form.reset();
+    });
+  </script>
+</body>
+</html>
