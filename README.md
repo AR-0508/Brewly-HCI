@@ -1,111 +1,93 @@
-# Brewly: HCI Lab 07 (Figma to Website)
+#Brewly
 
-PUCIT, Human-Computer Interaction, Lab 07.
-A four-section responsive website (Navbar, Hero + CTA, 3-card Feature Grid, Contact Form + Footer) designed in Figma with Auto Layout and variables, then converted to semantic HTML5 + Tailwind CSS.
+A responsive landing page for a fictional coffee-delivery brand, built for Human-Computer Interaction, Lab 07 (PUCIT). The lab covers the design-to-code workflow: a layout is prepared in Figma, read through the Figma MCP server, and implemented as semantic HTML with Tailwind CSS.
 
-## Project structure
+Figma file: <add link>
+Repository: <add link>
+Live site: <add link>
+Overview
 
-```
-hci-lab07/
-├── index.html                  # Final website (HTML5 + Tailwind CSS via CDN)
-├── assets/                     # hero.svg + 3 exported icon SVGs
-├── design/design-tokens.json   # Colour / spacing / radius tokens (mirror of Figma variables)
-├── figma-plugin/               # One-click plugin that builds the Figma file
+The page has four sections, each mapped to a named frame in Figma:
+
+Section	Purpose
+Navbar	Brand, anchor links, primary call to action
+Hero	Headline, supporting text, two buttons, illustration
+Features	Three cards: Fresh roasted, Fast delivery, Made for everyone
+Contact	Name, email and message form, followed by the footer
+Tech stack
+HTML5 with semantic landmarks (header, nav, main, section, footer)
+Tailwind CSS v3, loaded from the CDN, so there is no build step
+Vanilla JavaScript for client-side form validation only
+SVG for the hero illustration and icons
+Figma Plugin API for generating the design file
+Figma MCP server (get_variable_defs, get_code) for design-to-code
+Design system
+
+Colours, spacing and radii are defined once as Figma variables (collection Brewly Tokens). The same values are exported to design/design-tokens.json and mirrored in the Tailwind config inside index.html.
+
+Token	Value	Use
+primary	
+#1E3A5F	Headings, buttons, footer
+accent	
+#0E9F9B	Highlights, icons, focus rings
+accent-soft	
+#E6F6F5	Icon badges, hero background
+background / surface	
+#F8FAFC / 
+#FFFFFF	Page and cards
+text / muted / border	
+#0F172A / 
+#475569 / 
+#E2E8F0	Body text, secondary text, dividers
+
+Typography is Inter. Spacing follows an 8 / 16 / 24 / 48 / 96 px scale, with 8, 12 and 20 px corner radii.
+
+Responsive behaviour
+
+Layouts are built with Auto Layout in Figma and flexbox/grid in code, with no absolute positioning. The feature grid collapses from three columns to two to one across the three design widths.
+
+Breakpoint	Width	Feature grid
+Desktop	1440 px	3 columns
+Tablet	768 px	2 columns
+Mobile	375 px	1 column
+Usability and accessibility
+Native <a>, <button> and <input> elements, with no click handlers on generic containers
+Every form field has a <label> bound by for/id
+Visible hover and keyboard-focus states on all interactive elements
+A "skip to main content" link for keyboard users
+Descriptive alt text on the hero image; decorative icons use alt=""
+Form feedback announced through an aria-live region
+Body text and button colours chosen for strong contrast against their backgrounds
+Project structure
+.
+├── index.html                  Website (HTML + Tailwind)
+├── assets/                     Hero illustration and exported SVG icons
+├── design/design-tokens.json   Design tokens exported from Figma variables
+├── figma-plugin/               Plugin that generates the Figma file
 │   ├── manifest.json
 │   └── code.js
-├── .vscode/mcp.json            # Figma MCP config for VS Code
-├── .cursor/mcp.json            # Figma MCP config for Cursor
-├── MCP-PROMPT.md               # Prompt used with the Figma MCP tools
-└── SUBMISSION-CHECKLIST.md     # Tick-list mapped to the lab PDF
-```
+├── .vscode/mcp.json            Figma MCP server config (VS Code)
+├── .cursor/mcp.json            Figma MCP server config (Cursor)
+├── MCP-PROMPT.md               Prompt used with the Figma MCP tools
+├── SETUP-GUIDE.md              Manual steps: Figma, MCP, GitHub, deployment
+└── SUBMISSION-CHECKLIST.md     Lab tasks and deliverables checklist
+Running locally
 
-## Palette
+No installation is needed. Open index.html in a browser, or serve the folder:
 
-| Token | Hex | Use |
-|---|---|---|
-| primary | `#1E3A5F` | Navbar text, headings, buttons, footer |
-| accent | `#0E9F9B` | Highlights, icons |
-| accent-soft | `#E6F6F5` | Icon badges, hero image bg |
-| background | `#F8FAFC` | Page |
-| surface | `#FFFFFF` | Cards, inputs |
-| text / muted / border | `#0F172A` / `#475569` / `#E2E8F0` | Body, secondary text, dividers |
+bash
+npx serve .
+Figma workflow
+figma-plugin/ builds the Desktop (1440) and Mobile (375) frames with Auto Layout, bound variables, semantic layer names and SVG-exportable icons.
+The Figma MCP server is configured in .vscode/mcp.json. The prompt in MCP-PROMPT.md reads the variables and frame structure and generates the layout.
+The generated structure is implemented in index.html and checked against the Figma frames.
 
----
+See SETUP-GUIDE.md for the full procedure.
 
-## STEP-BY-STEP: what YOU do manually
+Deployment
 
-### Part A: Create the Figma file (about 5 min)
+The site is static and deploys from the repository root to GitHub Pages, Netlify or Vercel with no build command.
 
-1. Go to figma.com, log in, and create a **new Design file**. Rename it `Brewly - HCI Lab 07`.
-2. Install the plugin from this folder: use **Figma Desktop App** (plugins under development need it).
-   - Menu: **Plugins > Development > Import plugin from manifest...**
-   - Select `figma-plugin/manifest.json`.
-3. Run it: **Plugins > Development > Brewly Lab07 Generator**.
-   It creates a Desktop (1440) frame and a Mobile (375) frame, all using Auto Layout, with the variable collection **Brewly Tokens** (colours, spacing, radius) and semantic layer names (`Navbar`, `HeroSection`, `PrimaryButton`, `FeatureCard`, `ContactForm`, `Footer`). Icons are marked for SVG export.
-4. Check **Local variables** (right panel, nothing selected > "Local variables" icon) to confirm the variables exist (this is evidence for the lab).
-5. **Share**: top-right **Share > Anyone with the link > Can view > Copy link**. This is deliverable #1.
-6. Copy the frame link for MCP: right-click the **Page/Desktop 1440** frame > **Copy/Paste as > Copy link to selection**.
+Author
 
-> If the plugin shows an error about fonts, install the free **Inter** font (fonts.google.com/specimen/Inter) and re-run. If the import menu isn't there, you're probably in the browser; open the desktop app.
-
-### Part B: Connect Figma MCP in VS Code (about 5 min)
-
-1. Open this folder in VS Code (**File > Open Folder > hci-lab07**).
-2. The config is already in `.vscode/mcp.json`. Open it; a small **Start** link appears above `"figma"`. Click it.
-   (Or: Command Palette `Ctrl+Shift+P` > **MCP: Add Server** > HTTP > `https://mcp.figma.com/mcp` > name `figma`.)
-3. A browser window opens to sign in to Figma and **Allow access**.
-4. Open **Copilot Chat** (or Antigravity / Cursor) in **Agent mode**, click the tools icon, and confirm `figma` tools are listed (`get_code`, `get_variable_defs`, ...).
-5. Paste the prompt from `MCP-PROMPT.md` with your Figma frame link. Let the agent run `get_variable_defs` and `get_code`.
-6. Compare its output with the `index.html` already in this folder and keep whichever you prefer. The provided `index.html` already meets every Task 3 requirement, so you can use the agent's output as reference. **Take a screenshot** of the MCP tool call running. It is good evidence.
-
-*Alternative (plugin route):* in Figma run **Builder.io Visual Copilot** or **Locofy** on the Desktop frame, export HTML + Tailwind, and add the screenshot to your report.
-
-### Part C: Test responsiveness and accessibility (about 5 min)
-
-1. Open `index.html` in Chrome. Press **F12 > Ctrl+Shift+M** (device toolbar).
-2. Check widths **1440**, **768** and **375**: cards go 3 columns > 2 > 1, with no horizontal scrollbar.
-3. Press **Tab** repeatedly: every link, button and field shows a visible teal focus ring. Hover over buttons and cards to see hover states.
-4. Click each label in the form; the matching input should focus.
-
-### Part D: Push to GitHub (about 5 min)
-
-In a terminal inside the `hci-lab07` folder:
-```bash
-git init
-git add .
-git commit -m "HCI Lab 07: Figma to website (Brewly)"
-git branch -M main
-```
-
-1. On github.com click **New repository**, name it `hci-lab07-brewly`, set it to **Public**, don't tick "Add README", then **Create**.
-2. Back in the terminal (replace `YOUR-USERNAME`):
-
-```bash
-git remote add origin https://github.com/YOUR-USERNAME/hci-lab07-brewly.git
-git push -u origin main
-```
-
-If asked to log in, use your GitHub username and a **Personal Access Token** (GitHub > Settings > Developer settings > Tokens) or sign in through the browser prompt. Deliverable #2 is the repo URL.
-
-### Part E: Deploy (pick ONE, GitHub Pages is easiest)
-
-**GitHub Pages**
-1. Repo > **Settings > Pages**.
-2. Source: **Deploy from a branch**, Branch: `main`, folder `/ (root)` > **Save**.
-3. Wait about 1 minute. Your URL: `https://YOUR-USERNAME.github.io/hci-lab07-brewly/`.
-
-**Netlify (alternative)**: app.netlify.com > **Add new site > Import an existing project > GitHub** > choose the repo > leave build command empty, publish directory `.` > **Deploy**.
-
-**Vercel (alternative)**: vercel.com > **Add New > Project** > import the repo > Framework: **Other** > **Deploy**.
-
-Open the live URL on your phone as a final check. Deliverable #3 is that URL.
-
-### Part F: Submit
-
-Submit the 3 links (Figma, GitHub, Live site). See `SUBMISSION-CHECKLIST.md`.
-
----
-
-## Note on how the code was produced
-
-`index.html` follows the Figma structure 1:1 (same sections, tokens and component names). Tailwind is loaded from the CDN, which keeps the project build-free and simple. Tokens in `tailwind.config` match `design/design-tokens.json` and the Figma variables.
+Abdur Rehman Arif, HCI Lab 07, PUCIT.
